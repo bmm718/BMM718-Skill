@@ -1,0 +1,7 @@
+status: open_ready_v1
+track: open
+track_basis: "纯开源独立文件整理能力；源码、文档与样本均使用通用规则及虚构数据"
+distilled_from: []
+third_party: []
+runtime_data: ~/.bmms/bmms-file-steward/
+first_exported: 2026-09-22
