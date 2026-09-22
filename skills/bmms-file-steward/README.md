@@ -1,27 +1,24 @@
 # 文件管家 · bmms-file-steward
 
+[BMM718-Skill（BMMS）](https://github.com/bmm718/BMM718-Skill) 中的文件整理技能。本页介绍当前公开稳定版。
+
 把文件按用途理顺，完整核对重复，保留不同用途副本，先隔离已确认多余项，之后继续帮你归位和查找。
 
 ## 安装和使用
 
 需要支持本地 Skill 和文件工具的 Agent；执行脚本需要 Python 3.9 或更高版本，无第三方 Python 包、订阅后台或作者账号依赖。代码与文档采用发行仓库根目录的 MIT 许可。网盘服务本身的账号、API 配额和条款由服务商决定，接口不是 Skill 附送的服务。
 
-取得发布包后，将完整 `bmms-file-steward` 目录复制到宿主的用户级 Skills 目录并刷新/重开会话。Codex 可使用用户主目录下 `.agents/skills/`；已有同名安装先比较版本，勿覆盖自己的运行数据。其他 Agent 按其官方 Skill 安装说明导入整个目录。只复制 `SKILL.md` 会缺少工具与参考文件。
-
-也可在下载包所在父目录运行开源 Skills CLI。macOS / Linux（Bash）：
+直接安装这一项（macOS、Linux、Windows PowerShell）：
 
 ```sh
-DISABLE_TELEMETRY=1 npx -y skills add ./bmms-file-steward --skill bmms-file-steward -g
+npx -y skills add https://github.com/bmm718/BMM718-Skill --skill bmms-file-steward -g
 ```
 
-Windows PowerShell：
+安装器需要 Node.js/npm 和网络；按提示选择自己使用的 Agent，然后刷新或重开会话。本地 Python 文件工具不需要网络。
 
-```powershell
-$env:DISABLE_TELEMETRY = "1"
-npx -y skills add ./bmms-file-steward --skill bmms-file-steward -g
-```
+也可以从[发布页](https://github.com/bmm718/BMM718-Skill/releases)下载 ZIP，解压后将 `skills/bmms-file-steward/` 整个目录复制到宿主的用户级 Skills 目录。Codex 可使用用户主目录下 `.agents/skills/`。已有同名安装先比较版本，保留自己的运行数据；只复制 `SKILL.md` 会缺少工具与参考文件。
 
-上例关闭 Skills CLI 的安装遥测。安装器需要 Node.js/npm 和网络；选择自己实际使用的宿主。本地 Python 核心不需要网络。远端仓库发布后可用仓库 URL 安装；本说明不把尚未发布的地址当作可用领取链接。
+Skills CLI 默认可提交仓库、Skill、Agent 等安装信息，用于 skills.sh 目录展示；安装统计不代表持续使用。退出方式：macOS/Linux 在命令前加 `DISABLE_TELEMETRY=1`，PowerShell 先执行 `$env:DISABLE_TELEMETRY = "1"`；保留已有 `DO_NOT_TRACK` 等退出设置。手动复制不经过 CLI 安装统计。文件管家公开版不向作者发送使用或回访记录。
 
 对 Agent 说：
 
@@ -42,7 +39,7 @@ npx -y skills add ./bmms-file-steward --skill bmms-file-steward -g
 - `scripts/cloud_verify.py`：对网盘候选的完整下载副本统一计算 SHA-256。当前接口字段需先核实；不透明指纹只用于候选筛选。
 - [本地可运行示例](references/local.md)与[网盘接入说明](references/cloud.md)。网盘移动和上传由宿主实际可用接口完成，不内置所有服务商适配器。
 
-所有分类记录、盘点和回执保存在使用者自己的 `~/.bmms/bmms-file-steward/` 或指定目录。凭据留在使用者自己的连接器配置中。没有遥测、安装回报、自动更新检查或文件外发；更新时由用户自行取得新版本。
+所有分类记录、盘点和回执保存在使用者自己的 `~/.bmms/bmms-file-steward/` 或指定目录。凭据留在使用者自己的连接器配置中。文件整理脚本没有网络上报，更新时由使用者自行取得新版本。
 
 ## 边界和验证
 
