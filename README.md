@@ -27,17 +27,20 @@ Practical agent skills for everyday life.
 macOS / Linux（Bash）：
 
 ```sh
-DISABLE_TELEMETRY=1 npx -y skills add bmm718/bmmskill --skill bmms-file-steward -g
+npx -y skills add bmm718/bmmskill --skill bmms-file-steward -g
 ```
 
 Windows PowerShell：
 
 ```powershell
-$env:DISABLE_TELEMETRY = "1"
 npx -y skills add bmm718/bmmskill --skill bmms-file-steward -g
 ```
 
-按安装器提示选择你使用的 Agent，然后刷新或重开会话。命令关闭 Skills CLI 的安装遥测；文件管家自身没有遥测或作者后台依赖。
+按安装器提示选择你使用的 Agent，然后刷新或重开会话。
+
+Skills CLI 默认向 skills.sh 发送安装统计，包含仓库、Skill、Agent 等安装信息，用于目录与榜单。安装统计不代表实际持续使用。若想退出，可在 macOS/Linux 命令前加 `DISABLE_TELEMETRY=1`；PowerShell 先执行 `$env:DISABLE_TELEMETRY = "1"`。已有的 `DO_NOT_TRACK` 设置也会被安装器尊重。[安装器官方说明](https://skills.sh/docs/cli)
+
+文件管家当前公开版不采集使用数据，也不会向作者发送回访记录。本地文件整理无需联网。
 
 也可以从 [Releases](https://github.com/bmm718/bmmskill/releases) 下载发布包，按[文件管家说明](bmms-file-steward/README.md)手动安装完整目录。
 
