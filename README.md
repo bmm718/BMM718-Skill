@@ -14,7 +14,7 @@ Practical agent skills for everyday life.
 
 | 你想完成的事 | Skill | 使用说明 |
 |---|---|---|
-| 按用途整理文件、核对重复、隔离多余副本，继续归位和查找 | `bmms-file-steward` · 文件管家 | [打开文件管家](skills/bmms-file-steward/README.md) |
+| 按用途整理文件、核对重复、隔离多余副本，继续归位和查找 | `bmms-file-steward` · [文件管家](skills/bmms-file-steward/README.md) | [打开文件管家](skills/bmms-file-steward/README.md) |
 
 本页是整个集合的入口。各项技能的具体用法、依赖和限制在各自页面中说明。
 
