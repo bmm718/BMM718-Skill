@@ -1,0 +1,14 @@
+status: open_ready_v1
+track: open
+track_basis: "2026-10-16 项目所有者定：台灯期配套交付，随期开源；本体只含通用规则与虚构样本，用户家电清单与说明书留在用户项目目录"
+distilled_from: []
+third_party: []
+runtime_data: <用户项目目录>/家电支持中心/
+first_exported: 2026-10-16
+interface:
+  display_name: "BMMS 全屋说明书"
+  short_description: "把家里每台电器的官方说明书按型号收进项目目录当真源，问答先查说明书引页码，没写的标推测给排除顺序"
+  brand_color: "#2E7D32"
+  default_prompt: "使用 $bmms-home-manuals 开始记录我家的家电，把说明书收进来。"
+policy:
+  allow_implicit_invocation: true

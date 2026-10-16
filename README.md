@@ -10,11 +10,12 @@ Practical agent skills for everyday life.
 
 ## 能力一览
 
-目前公开 **1 个技能**。每个技能都有独立的使用说明、工具和安装入口。
+目前公开 **2 个技能**。每个技能都有独立的使用说明、工具和安装入口。
 
 | 你想完成的事 | Skill | 使用说明 |
 |---|---|---|
 | 按用途整理文件、核对重复、隔离多余副本，继续归位和查找 | `bmms-file-steward` · [文件管家](skills/bmms-file-steward/README.md) | [打开文件管家](skills/bmms-file-steward/README.md) |
+| 把家里每台电器的说明书按型号收进来，问用法先查说明书、出故障陪你一步步排 | `bmms-home-manuals` · [全屋说明书](skills/bmms-home-manuals/README.md) | [打开全屋说明书](skills/bmms-home-manuals/README.md) |
 
 本页是整个集合的入口。各项技能的具体用法、依赖和限制在各自页面中说明。
 
@@ -28,7 +29,7 @@ Practical agent skills for everyday life.
 npx -y skills add bmm718/BMM718-Skill --skill '*' -g
 ```
 
-会安装仓库中当前公开的全部技能。目前只有文件管家；以后新增技能，可重新执行安装并按提示更新。
+会安装仓库中当前公开的全部技能。目前有文件管家和全屋说明书；以后新增技能，可重新执行安装并按提示更新。
 
 ### 只安装文件管家
 
@@ -37,6 +38,14 @@ npx -y skills add bmm718/BMM718-Skill --skill bmms-file-steward -g
 ```
 
 按安装器提示选择 Agent，安装后刷新或重开会话。执行文件管家的本地工具需要 Python 3.9+，无第三方 Python 包依赖。
+
+### 只安装全屋说明书
+
+```sh
+npx -y skills add bmm718/BMM718-Skill --skill bmms-home-manuals -g
+```
+
+不带脚本，没有额外依赖；但 Agent 要能联网下载文件、读 PDF、在项目目录里存文件，只能聊天的网页版用不了。
 
 ### 手动下载
 
@@ -52,6 +61,12 @@ Skills CLI 默认向 skills.sh 发送包含仓库、Skill、Agent 等信息的�
 
 安装不会自动开始扫盘或移动文件。具体流程、可恢复操作和网盘边界见[文件管家使用说明](skills/bmms-file-steward/README.md)。
 
+安装全屋说明书后，在你想放说明书的项目目录里打开 Agent，它会直接问你家有什么家电，你答一台它找一台。要是它没开口，对它说：
+
+> 开始记录家电
+
+它不碰电器、不读设备数据、不推荐买什么；边界与两档回答方式见[全屋说明书使用说明](skills/bmms-home-manuals/README.md)。
+
 ## 集合与单个技能
 
 ```text
@@ -59,12 +74,16 @@ BMM718-Skill（BMMS）
 ├── README.md                   集合介绍与安装入口
 ├── LICENSE                     开源许可
 └── skills/
-    └── bmms-file-steward/       文件管家
+    ├── bmms-file-steward/       文件管家
+    │   ├── README.md           单项使用说明
+    │   ├── SKILL.md            Agent 执行指令
+    │   ├── scripts/            文件工具
+    │   ├── references/         用法与边界
+    │   └── tests/              合成样本验证
+    └── bmms-home-manuals/       全屋说明书
         ├── README.md           单项使用说明
         ├── SKILL.md            Agent 执行指令
-        ├── scripts/            文件工具
-        ├── references/         用法与边界
-        └── tests/              合成样本验证
+        └── references/         清单模板、真源优先级、问答模板、虚构样本
 ```
 
 ## 更新与反馈
