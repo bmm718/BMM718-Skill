@@ -1,0 +1,6 @@
+interface:
+  display_name: "BMMS 模型适配体检"
+  short_description: "提到模型提升或新模型发布时，核对变化并体检当前协作指令是否适配"
+  default_prompt: "又发布新模型了。使用 $bmms-model-fit 核对它的变化并检查当前 AGENTS 与 Skills 是否需要适配，沿用已有型号、范围和授权。"
+policy:
+  allow_implicit_invocation: true

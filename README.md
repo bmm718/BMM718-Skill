@@ -10,12 +10,13 @@ Practical agent skills for everyday life.
 
 ## 能力一览
 
-目前公开 **2 个技能**。每个技能都有独立的使用说明、工具和安装入口。
+目前公开 **3 个技能**。每个技能都有独立的使用说明、工具和安装入口。
 
 | 你想完成的事 | Skill | 使用说明 |
 |---|---|---|
 | 按用途整理文件、核对重复、隔离多余副本，继续归位和查找 | `bmms-file-steward` · [文件管家](skills/bmms-file-steward/README.md) | [打开文件管家](skills/bmms-file-steward/README.md) |
 | 把家里每台电器的说明书按型号收进来，问用法先查说明书、出故障陪你一步步排 | `bmms-home-manuals` · [全屋说明书](skills/bmms-home-manuals/README.md) | [打开全屋说明书](skills/bmms-home-manuals/README.md) |
+| 换模型后检查并优化 AGENTS 与 Skills，定位重复确认、提前停止和过度施工 | `bmms-model-fit` · [模型适配体检](skills/bmms-model-fit/README.md) | [打开模型适配体检](skills/bmms-model-fit/README.md) |
 
 本页是整个集合的入口。各项技能的具体用法、依赖和限制在各自页面中说明。
 
@@ -29,7 +30,7 @@ Practical agent skills for everyday life.
 npx -y skills add bmm718/BMM718-Skill --skill '*' -g
 ```
 
-会安装仓库中当前公开的全部技能。目前有文件管家和全屋说明书；以后新增技能，可重新执行安装并按提示更新。
+会安装仓库中当前公开的全部技能。目前有文件管家、全屋说明书和模型适配体检；以后新增技能，可重新执行安装并按提示更新。
 
 ### 只安装文件管家
 
@@ -47,9 +48,17 @@ npx -y skills add bmm718/BMM718-Skill --skill bmms-home-manuals -g
 
 不带脚本，没有额外依赖；但 Agent 要能联网下载文件、读 PDF、在项目目录里存文件，只能聊天的网页版用不了。
 
+### 只安装模型适配体检
+
+```sh
+npx -y skills add bmm718/BMM718-Skill --skill bmms-model-fit -g
+```
+
+按提示选择当前使用的 Agent，安装后刷新或重开会话。文字体检不需要额外程序；运行合成场景辅助脚本需要 Python 3.9+，只用标准库。
+
 ### 手动下载
 
-从 [Releases](https://github.com/bmm718/BMM718-Skill/releases) 下载发布包。解压后，技能在 `skills/` 下；将需要的完整技能目录按其[安装说明](skills/bmms-file-steward/README.md#安装和使用)导入 Agent。
+从仓库页面的 **Code → Download ZIP** 下载当前全部技能。解压后，技能在 `skills/` 下，将需要的完整技能目录放进 Agent 支持的 Skill 安装位置。也可从 [Releases](https://github.com/bmm718/BMM718-Skill/releases) 获取历史版本；旧发行包可能不包含后续新增技能。
 
 Skills CLI 默认向 skills.sh 发送包含仓库、Skill、Agent 等信息的安装统计，用于目录与榜单；安装次数不代表持续使用。退出方式：macOS/Linux 在安装命令前加 `DISABLE_TELEMETRY=1`，PowerShell 先执行 `$env:DISABLE_TELEMETRY = "1"`。已有 `DO_NOT_TRACK` 设置也会被尊重，详见[安装器说明](https://skills.sh/docs/cli)。当前公开技能不向作者发送使用或回访记录。
 
@@ -67,6 +76,12 @@ Skills CLI 默认向 skills.sh 发送包含仓库、Skill、Agent 等信息的�
 
 它不碰电器、不读设备数据、不推荐买什么；边界与两档回答方式见[全屋说明书使用说明](skills/bmms-home-manuals/README.md)。
 
+安装模型适配体检后，在目标项目里对 Agent 说：
+
+> 我换了新模型，帮我检查这个项目的 AGENTS 和正在使用的 Skills，该调整的直接优化。
+
+想先看建议，可补充“先只读审阅”。它会保留用户的权限和业务边界；真实模型效果需要实际测试证据，详见[模型适配体检使用说明](skills/bmms-model-fit/README.md)。
+
 ## 集合与单个技能
 
 ```text
@@ -80,10 +95,17 @@ BMM718-Skill（BMMS）
     │   ├── scripts/            文件工具
     │   ├── references/         用法与边界
     │   └── tests/              合成样本验证
-    └── bmms-home-manuals/       全屋说明书
+    ├── bmms-home-manuals/       全屋说明书
+    │   ├── README.md           单项使用说明
+    │   ├── SKILL.md            Agent 执行指令
+    │   └── references/         清单模板、真源优先级、问答模板、虚构样本
+    └── bmms-model-fit/          模型适配体检
         ├── README.md           单项使用说明
         ├── SKILL.md            Agent 执行指令
-        └── references/         清单模板、真源优先级、问答模板、虚构样本
+        ├── agents/             宿主入口
+        ├── references/         验证协议与致谢
+        ├── scripts/            离线场景辅助工具
+        └── tests/              合成题库与工具测试
 ```
 
 ## 更新与反馈

@@ -1,0 +1,13 @@
+status: open_ready_v1
+track: open
+track_basis: "用户已明确选择开源方向；通用正文、合成题库、本地校验与独立使用检查完成"
+distilled_from: []
+third_party:
+  - creator: "数字生命卡兹克"
+    source: "数字生命卡兹克公众号"
+    contribution: "基础审阅思路的启发，来源由项目发起者介绍"
+    source_url: null
+    reproduced_material: "未收录第三方原文；references/attribution.md 仅保留自主概述与致谢"
+    license_scope: "本项目自主表述与原创实现适用发行仓库LICENSE"
+runtime_data: ~/.bmms/bmms-model-fit/
+first_exported: 2026-10-23
